@@ -8,10 +8,17 @@ dependencies:
   browser: ^0.10.0
   dart_to_js_script_rewriter: ^1.0.1
 dev_dependencies:
-  webdriver: ^1.2.1
+  angular_test: ^1.0.0-beta+5
+  test: ^0.12.0
 transformers:
 - angular:
     entry_points: web/main.dart
+- angular/transform/reflection_remover:
+    $include:
+      - test/**_test.dart
+      - web/main.dart
+- test/pub_serve:
+    $include: test/**_test.dart
 - $dart2js:
     commandLineOptions: [--trust-type-annotations, --trust-primitives, --show-package-warnings, --dump-info]
 - dart_to_js_script_rewriter
